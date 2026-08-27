@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Check out render source
         uses: actions/checkout@v4
+      - name: Normalize TikZ text color syntax
+        run: |
+          sed -i 's/\\node\[text,/\\node[text=text,/g' Helios_One_Operational_World_v0.1.tex Helios_How_the_System_Works_v0.1.tex Helios_Tech_Part2.tex
       - name: Compile operator guide
         uses: xu-cheng/latex-action@v3
         with:
