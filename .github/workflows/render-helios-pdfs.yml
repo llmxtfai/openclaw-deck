@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Check out render source
         uses: actions/checkout@v4
-      - name: Normalize TikZ text color syntax
-        run: |
-          sed -i 's/\\node\[text,/\\node[text=text,/g' Helios_One_Operational_World_v0.1.tex Helios_How_the_System_Works_v0.1.tex Helios_Tech_Part2.tex
       - name: Compile operator guide
         uses: xu-cheng/latex-action@v3
         with:
@@ -22,11 +19,31 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Helios_How_the_System_Works_v0.1.tex
+      - name: Reject layout overflow
+        run: |
+          if grep -Hn 'Overfull \\[hv]box' Helios_One_Operational_World_v0.1.log Helios_How_the_System_Works_v0.1.log; then
+            echo 'Layout overflow detected.' >&2
+            exit 1
+          fi
+      - name: Verify PDF structure, text, and page rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+          test "$(pdfinfo Helios_One_Operational_World_v0.1.pdf | awk '/^Pages:/ {print $2}')" = "8"
+          test "$(pdfinfo Helios_How_the_System_Works_v0.1.pdf | awk '/^Pages:/ {print $2}')" = "10"
+          pdftotext Helios_One_Operational_World_v0.1.pdf - | grep -q 'One Operational World'
+          pdftotext Helios_How_the_System_Works_v0.1.pdf - | grep -q 'How the System Works'
+          mkdir -p qa/operator qa/technical
+          pdftoppm -png -r 72 -q Helios_One_Operational_World_v0.1.pdf qa/operator/page
+          pdftoppm -png -r 72 -q Helios_How_the_System_Works_v0.1.pdf qa/technical/page
+          test "$(find qa/operator -name 'page-*.png' | wc -l)" = "8"
+          test "$(find qa/technical -name 'page-*.png' | wc -l)" = "10"
+          sha256sum Helios_One_Operational_World_v0.1.pdf Helios_How_the_System_Works_v0.1.pdf > Helios_PDF_SHA256SUMS.txt
       - name: Commit rendered PDFs to temporary branch
         run: |
           git config user.name "Helios PDF Renderer"
           git config user.email "llmx@texasfortress.ai"
-          git add Helios_One_Operational_World_v0.1.pdf Helios_How_the_System_Works_v0.1.pdf
+          git add Helios_One_Operational_World_v0.1.pdf Helios_How_the_System_Works_v0.1.pdf Helios_PDF_SHA256SUMS.txt
           git commit -m "temporary rendered Helios PDFs [skip ci]"
           git push origin HEAD:tmp/helios-pdf-render
       - name: Upload PDFs
@@ -37,3 +54,4 @@ jobs:
           path: |
             Helios_One_Operational_World_v0.1.pdf
             Helios_How_the_System_Works_v0.1.pdf
+            Helios_PDF_SHA256SUMS.txt

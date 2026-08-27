@@ -25,7 +25,6 @@
 \setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
 \setbeamerfont{block title}{series=\bfseries}
 \setbeamertemplate{itemize item}{\color{mint}$\blacktriangleright$}
-\setbeamertemplate{itemize subitem}{\color{blue}$\bullet$}
 \setbeamertemplate{footline}{\hfill{\color{muted}\scriptsize HELIOS -- ONE OPERATIONAL WORLD \quad \insertframenumber/\inserttotalframenumber\hspace{6mm}\vspace{3mm}}}
 \newcommand{\status}[2]{\textcolor{#1}{\scriptsize\bfseries #2}}
 \newcommand{\tagcurrent}{\status{green}{CURRENT}}
@@ -54,29 +53,27 @@
 \end{frame}
 
 \begin{frame}{What Helios actually is}
-{\Large One governed operating environment for understanding conditions, coordinating response, supervising autonomy, and proving outcomes.}\vspace{5mm}
+{\large One governed environment for understanding conditions, coordinating response, supervising autonomy, and proving outcomes.}\vspace{3mm}
 \begin{columns}[T]
 \column{.32\textwidth}
 \begin{block}{Operational world}
-\small Digital Twin, Sites, zones, routes, cameras, sensors, robotic assets, human teams, evidence, and current readiness.
+\small Digital Twin, Sites, zones, routes, sensors, robotic assets, human teams, evidence, and readiness.
 \end{block}
 \column{.32\textwidth}
 \begin{block}{Governed action}
-\small Attention, Incidents, Missions, resources, Commands, intervention, observed effects, reconciliation, and Records.
+\small Attention, Incidents, Missions, resources, Commands, intervention, observed effects, and Records.
 \end{block}
 \column{.32\textwidth}
 \begin{block}{Cortex intelligence}
-\small Assessment, explanation, recommendations, policy-bounded intent, memory, learning candidates, and Agent coordination.
+\small Assessment, recommendations, policy-bounded intent, memory, learning, and Agent coordination.
 \end{block}
 \end{columns}
-\vspace{4mm}
+\vspace{3mm}
 \begin{block}{The principle}
 \centering Existing systems retain the authority they should own. Helios connects them into one operational and autonomy layer.
 \end{block}
 \vfill
-\tagcurrent\ Operator, spatial, execution, media, Cortex, and authority foundations \quad
-\tagdev\ Canonical Mission and Command integration \quad
-\tagplanned\ Policy autonomy and multi-Agent coordination
+\centering \tagcurrent\ Foundations \quad \tagdev\ Mission + Command integration \quad \tagplanned\ Autonomy + coordination
 \end{frame}
 
 \begin{frame}{One Site. One event. One shared context.}
@@ -90,7 +87,7 @@
   \item No matching access event is present.
   \item Visual identity remains unknown.
   \item One aerial asset is available.
-  \item A ground inspection robot is staged nearby.
+  \item A ground robot is staged nearby.
 \end{itemize}
 \end{block}
 \begin{block}{Attention created}
@@ -102,9 +99,9 @@
   \fill[panel,rounded corners=3pt] (0,0) rectangle (7,4.45);
   \draw[line,line width=1pt] (.3,.3) rectangle (6.7,4.1);
   \fill[active] (.75,.75) rectangle (2.35,1.95);
-  \node[text,font=\scriptsize] at (1.55,1.35){Operations};
+  \node[text=text,font=\scriptsize] at (1.55,1.35){Operations};
   \fill[active] (3,.7) rectangle (5.25,2.1);
-  \node[text,font=\scriptsize] at (4.13,1.4){Transformer yard};
+  \node[text=text,font=\scriptsize] at (4.13,1.4){Transformer yard};
   \draw[red,line width=1.5pt] (2.7,.45) rectangle (5.55,2.35);
   \node[red,font=\tiny] at (4.12,2.55){RESTRICTED ZONE};
   \fill[blue] (5.9,3.45) circle (.12);
@@ -132,18 +129,18 @@
 \end{block}
 \column{.32\textwidth}
 \begin{block}{PHASE 2 -- CORTEX ASSISTED}
-\small Cortex correlates evidence, explains uncertainty, compares options, and recommends an aerial observation Mission. The operator accepts, modifies, rejects, or asks why.\vspace{2mm}\par
+\small Cortex correlates evidence, explains uncertainty, compares options, and recommends an aerial Mission. The operator accepts, modifies, rejects, or asks why.\vspace{2mm}\par
 {\color{amber}\bfseries Human role: decide.}
 \end{block}
 \column{.32\textwidth}
 \begin{block}{PHASE 3 -- POLICY AUTONOMY}
-\small Evidence and policy qualify. Cortex initiates the approved observation Mission through normal readiness, resource, and Command admission. The operator supervises.\vspace{2mm}\par
+\small Evidence and policy qualify. Cortex initiates the approved observation Mission through normal readiness, resource, and Command admission.\vspace{2mm}\par
 {\color{blue}\bfseries Human role: supervise.}
 \end{block}
 \end{columns}
-\vspace{5mm}
+\vspace{4mm}
 \begin{block}{PHASE 4 -- MULTI-AGENT COORDINATION}
-\centering Site, Asset, Mission, and Operations Agents request and broker capabilities. Humans govern priorities, exceptions, policy, and consequence. No Agent gains authority from another Agent message alone.
+\centering Site, Asset, Mission, and Operations Agents request and broker capabilities. Humans govern priorities, exceptions, policy, and consequence.
 \end{block}
 \end{frame}
 
@@ -185,7 +182,7 @@ Why Helios acted\par Two current sources, after-hours zone, route valid, reserve
 \end{columns}
 \vspace{2mm}
 \begin{block}{MISSION AND RECEIPTS}
-\scriptsize Tasks: overhead view $\rightarrow$ track condition $\rightarrow$ inspect blind area $\rightarrow$ preserve evidence \hfill HOLD \quad REDIRECT \quad RETURN \quad ABORT\par\vspace{1mm}
+\scriptsize Tasks: overhead view $\rightarrow$ track $\rightarrow$ inspect blind area $\rightarrow$ preserve evidence \hfill HOLD \quad REDIRECT \quad RETURN \quad ABORT\par\vspace{1mm}
 Authorized {\color{green}\bfseries YES} \quad Delivered {\color{green}\bfseries YES} \quad Asset accepted {\color{green}\bfseries YES} \quad Effect observation {\color{amber}\bfseries PENDING}
 \end{block}
 \end{frame}
@@ -197,31 +194,31 @@ Authorized {\color{green}\bfseries YES} \quad Delivered {\color{green}\bfseries 
 \small
 \begin{itemize}
   \item Source geometry, frames, calibration, and uncertainty.
-  \item Buildings, roads, zones, routes, POIs, docks, and recovery.
+  \item Buildings, zones, routes, POIs, docks, and recovery.
   \item Cameras, sensors, coverage, and freshness.
   \item Asset deployments, capability, and readiness.
-  \item Missions, policy applicability, evidence, and revision.
+  \item Missions, policy, evidence, and revision.
 \end{itemize}
 \end{block}
 \begin{block}{Cortex uses structured context}
-\small Location, reachability, proximity, coverage, restrictions, resource qualification, route consequence, and evidence relationships.
+\small Location, reachability, coverage, restrictions, resource qualification, route consequence, and evidence relationships.
 \end{block}
 \column{.51\textwidth}
 \begin{block}{One accountable Mission picture}
 \centering
-\begin{tikzpicture}[x=1cm,y=1cm]
-  \node[draw=line,fill=active,text=text,rounded corners,minimum width=2.6cm,minimum height=.78cm] (d) at (3,4){Detection};
-  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=2.6cm,minimum height=.78cm] (a) at (3,3){Aerial observation};
-  \node[draw=mint,fill=panel,text=text,rounded corners,minimum width=2.6cm,minimum height=.78cm] (g) at (3,2){Ground inspection};
-  \node[draw=green,fill=panel,text=text,rounded corners,minimum width=2.6cm,minimum height=.78cm] (h) at (3,1){Human verification};
-  \draw[-{Latex},blue,line width=1.2pt] (d)--(a);
-  \draw[-{Latex},mint,line width=1.2pt] (a)--(g);
-  \draw[-{Latex},green,line width=1.2pt] (g)--(h);
-  \node[text,font=\scriptsize,align=left] at (6.4,2.5){Same Site context\par Separate accountable Missions\par Shared Incident and evidence\par Human and machine roles remain distinct};
+\begin{tikzpicture}[x=.82cm,y=.82cm]
+  \node[draw=line,fill=active,text=text,rounded corners,minimum width=2.2cm,minimum height=.68cm] (d) at (1.8,4){Detection};
+  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=2.2cm,minimum height=.68cm] (a) at (1.8,3){Aerial observation};
+  \node[draw=mint,fill=panel,text=text,rounded corners,minimum width=2.2cm,minimum height=.68cm] (g) at (1.8,2){Ground inspection};
+  \node[draw=green,fill=panel,text=text,rounded corners,minimum width=2.2cm,minimum height=.68cm] (h) at (1.8,1){Human verification};
+  \draw[-{Latex},blue,line width=1.1pt] (d)--(a);
+  \draw[-{Latex},mint,line width=1.1pt] (a)--(g);
+  \draw[-{Latex},green,line width=1.1pt] (g)--(h);
+  \node[text=text,font=\scriptsize,align=left,text width=2.8cm] at (5.4,2.5){Same Site context\par Separate accountable Missions\par Shared Incident and evidence\par Human and machine roles remain distinct};
 \end{tikzpicture}
 \end{block}
 \begin{block}{Trust is visible}
-\centering\small Authorized $\rightarrow$ Delivered $\rightarrow$ Accepted $\rightarrow$ Effect observed $\rightarrow$ Outcome known
+\centering\scriptsize Authorized $\rightarrow$ Delivered $\rightarrow$ Accepted $\rightarrow$ Observed $\rightarrow$ Outcome known
 \end{block}
 \end{columns}
 \end{frame}
@@ -254,26 +251,25 @@ Authorized {\color{green}\bfseries YES} \quad Delivered {\color{green}\bfseries 
 \end{frame}
 
 \begin{frame}{From one Site to the enterprise}
-\begin{tikzpicture}[x=1cm,y=1cm]
-  \node[draw=green,fill=panel,text=text,rounded corners,minimum width=3.2cm,minimum height=1.15cm,align=center] (n) at (2,4.3){North River\par Ready -- 2 Missions};
-  \node[draw=amber,fill=panel,text=text,rounded corners,minimum width=3.2cm,minimum height=1.15cm,align=center] (e) at (2,2.5){East Switching\par Degraded -- support needed};
-  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=3.2cm,minimum height=1.15cm,align=center] (h) at (2,.7){Hillcrest Hydro\par Local operation};
-  \node[draw=mint,fill=active,text=text,rounded corners,minimum width=4.6cm,minimum height=1.45cm,align=center] (o) at (7.5,2.5){Enterprise Operations + Cortex\par posture, Attention, policy, coordination};
-  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=3.8cm,minimum height=1.2cm,align=center] (r) at (12.8,2.5){Cross-Site request\par aerial thermal capability};
-  \draw[-{Latex},line,line width=1.2pt] (n)--(o);
-  \draw[-{Latex},line,line width=1.2pt] (e)--(o);
-  \draw[-{Latex},line,line width=1.2pt] (h)--(o);
-  \draw[-{Latex},blue,line width=1.4pt] (o)--(r);
+\centering
+\begin{tikzpicture}[x=.88cm,y=.78cm]
+  \node[draw=green,fill=panel,text=text,rounded corners,minimum width=2.7cm,minimum height=.9cm,align=center] (n) at (1.8,3.6){North River\par Ready -- 2 Missions};
+  \node[draw=amber,fill=panel,text=text,rounded corners,minimum width=2.7cm,minimum height=.9cm,align=center] (e) at (1.8,2.1){East Switching\par Support needed};
+  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=2.7cm,minimum height=.9cm,align=center] (h) at (1.8,.6){Hillcrest Hydro\par Local operation};
+  \node[draw=mint,fill=active,text=text,rounded corners,minimum width=3.8cm,minimum height=1.15cm,align=center] (o) at (7,2.1){Enterprise Operations + Cortex\par posture, Attention, policy, coordination};
+  \node[draw=blue,fill=panel,text=text,rounded corners,minimum width=3.1cm,minimum height=1cm,align=center] (r) at (12.3,2.1){Cross-Site request\par aerial thermal capability};
+  \draw[-{Latex},line,line width=1.1pt] (n)--(o);
+  \draw[-{Latex},line,line width=1.1pt] (e)--(o);
+  \draw[-{Latex},line,line width=1.1pt] (h)--(o);
+  \draw[-{Latex},blue,line width=1.3pt] (o)--(r);
 \end{tikzpicture}
-\vspace{4mm}
+\vspace{2mm}
 \begin{block}{The payoff}
-\centering{\LARGE\bfseries Your systems. Your Sites. One coherent operating experience.}\par\vspace{2mm}
+\centering{\Large\bfseries Your systems. Your Sites. One coherent operating experience.}\par\vspace{1mm}
 {\small See the operation. Coordinate the response. Prove the outcome.}
 \end{block}
 \vfill
-\tagcurrent\ Strong operator, spatial, execution, media, and Cortex foundations \quad
-\tagdev\ Canonical integration \quad
-\tagplanned\ Policy autonomy, resilient Site cells, and multi-Agent coordination
+\centering \tagcurrent\ Foundations \quad \tagdev\ Canonical integration \quad \tagplanned\ Autonomy, resilient Site cells, and coordination
 \end{frame}
 
 \end{document}
