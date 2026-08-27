@@ -22,14 +22,22 @@ jobs:
               line for line in lines
               if not ('\\tagcurrent' in line and '\\tagplanned' in line)
           ]
-          operator.write_text('\n'.join(lines) + '\n')
+          text = '\n'.join(lines) + '\n'
+          text = text.replace(
+              r'\centering{\Large\bfseries Your systems. Your Sites. One coherent operating experience.}',
+              r'\centering{\large\bfseries Your systems. Your Sites. One operational world.}'
+          )
+          operator.write_text(text)
 
           tech = Path('Helios_Tech_Part2.tex')
           text = tech.read_text()
+          text = text.replace(r'\begin{columns}[T]', r'\begin{columns}[T,onlytextwidth]', 1)
+          text = text.replace(r'\column{.44\textwidth}', r'\column{.41\textwidth}', 1)
+          text = text.replace(r'\column{.53\textwidth}', r'\column{.55\textwidth}', 1)
           marker = r'\begin{tikzpicture}[x=.78cm,y=.72cm]'
-          if marker in text and r'\resizebox{.92\linewidth}{!}{%' not in text:
+          if marker in text and r'\resizebox{.86\linewidth}{!}{%' not in text:
               pos = text.index(marker)
-              text = text[:pos] + r'\resizebox{.92\linewidth}{!}{%' + '\n' + text[pos:]
+              text = text[:pos] + r'\resizebox{.86\linewidth}{!}{%' + '\n' + text[pos:]
               close = text.index(r'\end{tikzpicture}', pos)
               close += len(r'\end{tikzpicture}')
               text = text[:close] + '}' + text[close:]
