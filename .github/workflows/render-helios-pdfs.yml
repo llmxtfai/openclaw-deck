@@ -31,6 +31,13 @@ jobs:
               r'\centering{\Large\bfseries Your systems. Your Sites. One coherent operating experience.}',
               r'\centering{\large\bfseries Your systems. Your Sites. One operational world.}'
           )
+          marker = r'\begin{tikzpicture}[x=.88cm,y=.78cm]'
+          if marker in text and r'\resizebox{.90\linewidth}{!}{%' not in text:
+              pos = text.index(marker)
+              text = text[:pos] + r'\resizebox{.90\linewidth}{!}{%' + '\n' + text[pos:]
+              close = text.index(r'\end{tikzpicture}', pos)
+              close += len(r'\end{tikzpicture}')
+              text = text[:close] + '}' + text[close:]
           operator.write_text(text)
 
           tech = Path('Helios_Tech_Part2.tex')
