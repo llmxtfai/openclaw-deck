@@ -18,11 +18,15 @@ jobs:
 
           operator = Path('Helios_One_Operational_World_v0.1.tex')
           lines = operator.read_text().splitlines()
-          lines = [
-              line for line in lines
-              if not ('\\tagcurrent' in line and '\\tagplanned' in line)
-          ]
-          text = '\n'.join(lines) + '\n'
+          corrected = []
+          for line in lines:
+              if line.startswith(r'\setbeamertemplate{footline}'):
+                  corrected.append(r'\setbeamertemplate{footline}{\hfill{\color{muted}\tiny HELIOS \quad \insertframenumber/\inserttotalframenumber\hspace{3mm}\vspace{2mm}}}')
+                  continue
+              if r'\tagcurrent' in line and r'\tagplanned' in line:
+                  continue
+              corrected.append(line)
+          text = '\n'.join(corrected) + '\n'
           text = text.replace(
               r'\centering{\Large\bfseries Your systems. Your Sites. One coherent operating experience.}',
               r'\centering{\large\bfseries Your systems. Your Sites. One operational world.}'
