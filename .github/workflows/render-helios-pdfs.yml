@@ -11,6 +11,37 @@ jobs:
     steps:
       - name: Check out render source
         uses: actions/checkout@v4
+      - name: Apply final layout corrections
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          operator = Path('Helios_One_Operational_World_v0.1.tex')
+          text = operator.read_text()
+          text = text.replace(
+              r'\centering \tagcurrent\ Foundations \quad \tagdev\ Canonical integration \quad \tagplanned\ Autonomy, resilient Site cells, and coordination',
+              r'\centering {\scriptsize \tagcurrent\ Foundations \quad \tagdev\ Integration \quad \tagplanned\ Autonomy + coordination}'
+          )
+          operator.write_text(text)
+
+          tech = Path('Helios_Tech_Part2.tex')
+          text = tech.read_text()
+          marker = r'\begin{tikzpicture}[x=.78cm,y=.72cm]'
+          pos = text.index(marker)
+          text = text[:pos] + r'\resizebox{.92\linewidth}{!}{%' + '\n' + text[pos:]
+          close = text.index(r'\end{tikzpicture}', pos)
+          close += len(r'\end{tikzpicture}')
+          text = text[:close] + '}' + text[close:]
+          text = text.replace(
+              r'\begin{frame}{Media, integration, identity, and trust}',
+              r'\begin{frame}[shrink=8]{Media, integration, identity, and trust}'
+          )
+          text = text.replace(
+              r'\begin{frame}{Degraded operation, delivery, and status}',
+              r'\begin{frame}[shrink=12]{Degraded operation, delivery, and status}'
+          )
+          tech.write_text(text)
+          PY
       - name: Compile operator guide
         uses: xu-cheng/latex-action@v3
         with:
