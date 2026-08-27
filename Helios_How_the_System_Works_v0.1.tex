@@ -1,0 +1,76 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{tikz}
+\usepackage[scaled=.92]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\definecolor{bg}{HTML}{071014}
+\definecolor{panel}{HTML}{101D22}
+\definecolor{active}{HTML}{16262C}
+\definecolor{line}{HTML}{2A3D43}
+\definecolor{text}{HTML}{E8F0F1}
+\definecolor{muted}{HTML}{8AA0A5}
+\definecolor{green}{HTML}{69D69A}
+\definecolor{mint}{HTML}{A4F0C3}
+\definecolor{amber}{HTML}{E8B85E}
+\definecolor{red}{HTML}{EC746D}
+\definecolor{blue}{HTML}{78B8DB}
+\setbeamercolor{background canvas}{bg=bg}
+\setbeamercolor{normal text}{fg=text,bg=bg}
+\setbeamercolor{frametitle}{fg=text,bg=bg}
+\setbeamercolor{block title}{fg=text,bg=active}
+\setbeamercolor{block body}{fg=text,bg=panel}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+\setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamertemplate{itemize item}{\color{mint}$\blacktriangleright$}
+\setbeamertemplate{footline}{\hfill{\color{muted}\scriptsize HELIOS -- HOW THE SYSTEM WORKS \quad \insertframenumber/\inserttotalframenumber\hspace{6mm}\vspace{3mm}}}
+\newcommand{\status}[2]{\textcolor{#1}{\scriptsize\bfseries #2}}
+\newcommand{\tagcurrent}{\status{green}{CURRENT}}
+\newcommand{\tagdev}{\status{amber}{IN DEVELOPMENT}}
+\newcommand{\tagplanned}{\status{blue}{PLANNED}}
+\begin{document}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[blue,opacity=.05] (13,2.5) circle (3.6);
+\draw[blue,opacity=.18,line width=18pt] (13,2.5) circle (2.3);
+\draw[green,opacity=.24,line width=4pt] (13,2.5) circle (3.2);
+\draw[mint,opacity=.38,line width=1.1pt] (9.8,5.6)--(15.8,.5);
+\end{tikzpicture}
+\vspace{9mm}{\color{mint}\Large\bfseries HELIOS}\par\vfill
+{\color{text}\fontsize{30}{34}\selectfont\bfseries How the System Works}\par\vspace{3mm}
+{\color{text}\Large Operational world, Cortex, Missions, robotic assets, and resilient Site cells}\par\vspace{8mm}
+{\color{blue}\large CONTROLLED TECHNICAL OVERVIEW}\par\vfill
+{\color{muted}\small Architecture and engineering evaluation edition}\hfill{\color{muted}\small Version 0.1 -- August 2026}
+\end{frame}
+\begin{frame}{System at a glance}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[draw=mint,fill=active,text=text,rounded corners,minimum width=14cm,minimum height=.8cm] (u) at (7,5.3){Operators and technical users -- React and Babylon operational experience};
+\node[draw=green,fill=panel,text=text,rounded corners,minimum width=14cm,minimum height=.9cm] (c) at (7,4){Phoenix and Elixir operational control -- identity, policy, Missions, Commands, Records};
+\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=6.6cm,minimum height=.9cm] (x) at (3.6,2.6){Cortex -- Agents, Runs, skills, memory, policy-bounded intent};
+\node[draw=amber,fill=panel,text=text,rounded corners,minimum width=6.6cm,minimum height=.9cm] (e) at (10.4,2.6){Site edge -- robotics, telemetry, media, perception, simulation};
+\node[draw=line,fill=active,text=text,rounded corners,minimum width=14cm,minimum height=.9cm] (s) at (7,1.2){Existing systems -- cameras, access, sensors, GIS, robotic platforms, enterprise services};
+\draw[-{Latex},line,line width=1.2pt] (u)--(c);\draw[-{Latex},line,line width=1.2pt] (c)--(x);\draw[-{Latex},line,line width=1.2pt] (c)--(e);\draw[-{Latex},line,line width=1.2pt] (s)--(c);\draw[-{Latex},line,line width=1.2pt] (s)--(e);
+\end{tikzpicture}
+\vspace{2mm}\begin{block}{Recommended baseline}\centering Site-local operational continuity with central enterprise coordination. Existing systems remain authoritative for the facts and controls they own.\end{block}
+\end{frame}
+\begin{frame}{One authority path. Deliberate technical boundaries.}
+\begin{columns}[T]
+\column{.49\textwidth}\begin{block}{Operational control plane owns}\small Organization and Site identity; Physical and Simulation Operations; policy; Mission Definition, Revision, Proposal, Run, and Tasks; resource reservation; Command admission; evidence relationships; audit; public interfaces.\end{block}
+\begin{block}{Site and edge own}\small Vendor protocols; target execution; platform-local rejection and failsafes; high-rate telemetry; media transport; perception; simulation and measured native workloads.\end{block}
+\column{.48\textwidth}\begin{block}{Cortex owns}\small Agent identity and replaceable Runs; provider supervision; bounded tools; assessment; recommendations; memory retrieval; policy-permitted intent; structured Agent requests.\end{block}
+\begin{block}{Paths that do not exist}\small The browser, scheduler, or Cortex cannot directly operate a platform. Simulation identity cannot become physical execution. Adapters cannot create Mission authority. Client state cannot become operational truth.\end{block}
+\end{columns}
+\vspace{3mm}\begin{block}{Constitution}\centering Every human, schedule, Cortex, policy, Agent, or tool request that may produce an effect enters the same BEAM-owned admission path.\end{block}
+\end{frame}
+\begin{frame}{Resilient Site cells with enterprise coordination}
+\begin{columns}[T]
+\column{.48\textwidth}\begin{block}{SITE-LOCAL HELIOS}\small\begin{itemize}\item Local operator access and durable state.\item Current operational world and approved Missions.\item Site Cortex and bounded local policy.\item Robotic adapters, telemetry, media, and perception.\item Evidence buffering and local observability.\item Bounded operation during enterprise disconnection.\end{itemize}\end{block}
+\column{.48\textwidth}\begin{block}{ENTERPRISE HELIOS}\small\begin{itemize}\item Multi-Site posture and Attention.\item Organization policy and administration.\item Central Cortex and longer-horizon analysis.\item Cross-Site requests and resource coordination.\item Federated Records, memory, and learning.\item Approved package, skill, model, and policy distribution.\end{itemize}\end{block}
+\end{columns}
+\vspace{4mm}\begin{tikzpicture}[x=1cm,y=1cm]\node[draw=green,fill=panel,text=text,rounded corners,minimum width=4cm,minimum height=.8cm] (a) at (3,0){Site A};\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=4cm,minimum height=.8cm] (b) at (11,0){Enterprise};\draw[mint,line width=2pt] (a)--(b);\node[fill=bg,text=muted,font=\scriptsize] at (7,.3){bounded, attributable federation};\end{tikzpicture}
+\vfill{\color{amber}\small Disconnection never creates new authority. Reconnect reconciles existing facts and never silently duplicates effects.}
+\end{frame}
+\input{Helios_Tech_Part2.tex}
+\end{document}

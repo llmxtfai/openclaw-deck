@@ -1,0 +1,95 @@
+\begin{frame}{The operational world is authoritative context}
+\begin{columns}[T]
+\column{.45\textwidth}
+\begin{block}{World Revision}\small Source digests; geometry; coordinate frames; units; transforms; calibration; uncertainty; semantic objects; zones; routes; POIs; sensors; deployments; limitations; publication and commissioning state.\end{block}
+\begin{block}{Presentation package}\small Babylon or another approved renderer consumes a derived package. Renderer state may optimize presentation but cannot become canonical world truth.\end{block}
+\column{.52\textwidth}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[draw=line,fill=active,text=text,rounded corners,minimum width=4.7cm,minimum height=.7cm] (g) at (3,4.4){Source geometry and surveys};
+\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=4.7cm,minimum height=.7cm] (f) at (3,3.4){Frames, calibration, uncertainty};
+\node[draw=mint,fill=panel,text=text,rounded corners,minimum width=4.7cm,minimum height=.7cm] (m) at (3,2.4){Semantic objects and policy zones};
+\node[draw=green,fill=panel,text=text,rounded corners,minimum width=4.7cm,minimum height=.7cm] (r) at (3,1.4){Routes, sensors, assets, readiness};
+\node[draw=amber,fill=panel,text=text,rounded corners,minimum width=4.7cm,minimum height=.7cm] (o) at (3,.4){Missions, evidence, operational state};
+\draw[-{Latex},line] (g)--(f);\draw[-{Latex},line] (f)--(m);\draw[-{Latex},line] (m)--(r);\draw[-{Latex},line] (r)--(o);
+\node[text,font=\scriptsize,align=left] at (7.4,2.4){Draft is not published.\par Simulation is not commissioned.\par A rendered scene is not authority.\par Historical Runs retain their pinned revision.};
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Mission and Command: intent to observed effect}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[draw=mint,fill=panel,text=text,rounded corners,minimum width=1.7cm,minimum height=.75cm] (i) at (.8,3.8){Intent};
+\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=1.9cm,minimum height=.75cm] (p) at (3.1,3.8){Policy};
+\node[draw=amber,fill=panel,text=text,rounded corners,minimum width=2.3cm,minimum height=.75cm] (r) at (5.9,3.8){Readiness};
+\node[draw=green,fill=panel,text=text,rounded corners,minimum width=2.2cm,minimum height=.75cm] (c) at (8.8,3.8){Command};
+\node[draw=line,fill=active,text=text,rounded corners,minimum width=2.4cm,minimum height=.75cm] (e) at (11.9,3.8){Private edge};
+\node[draw=mint,fill=panel,text=text,rounded corners,minimum width=2cm,minimum height=.75cm] (o) at (14.7,3.8){Observed};
+\draw[-{Latex},line] (i)--(p);\draw[-{Latex},line] (p)--(r);\draw[-{Latex},line] (r)--(c);\draw[-{Latex},line] (c)--(e);\draw[-{Latex},line] (e)--(o);
+\end{tikzpicture}
+\vspace{3mm}
+\begin{columns}[T]
+\column{.48\textwidth}\begin{block}{Mission structure}\small Reusable Definition; immutable Revision; exact Proposal; target preparation; Execution Authorization Snapshot; one admitted Run; independently progressing Task Runs; attributable completion and Record.\end{block}
+\column{.48\textwidth}\begin{block}{Command truth is orthogonal}\small Authority, delivery, target acceptance, observed effect, and Mission consequence remain separate. One dimension cannot silently advance another.\end{block}
+\end{columns}
+\vspace{3mm}\begin{block}{Unknown result}\centering If a Command may have reached a target but the response is lost, Helios reconciles the existing attempt. It does not blindly issue another effect.\end{block}
+\end{frame}
+
+\begin{frame}{Why sent is not the same as happened}
+\begin{columns}[T]
+\column{.58\textwidth}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[draw=green,fill=panel,text=text,rounded corners,minimum width=2.5cm,minimum height=.75cm] (a) at (2,4.4){Authorized};
+\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=2.5cm,minimum height=.75cm] (d) at (2,3.3){Delivered};
+\node[draw=mint,fill=panel,text=text,rounded corners,minimum width=2.5cm,minimum height=.75cm] (t) at (2,2.2){Target accepted};
+\node[draw=amber,fill=panel,text=text,rounded corners,minimum width=2.5cm,minimum height=.75cm] (e) at (2,1.1){Effect observed};
+\node[draw=line,fill=active,text=text,rounded corners,minimum width=2.5cm,minimum height=.75cm] (o) at (2,0){Outcome known};
+\draw[-{Latex},line] (a)--(d);\draw[-{Latex},line] (d)--(t);\draw[-{Latex},line] (t)--(e);\draw[-{Latex},line] (e)--(o);
+\node[text,font=\scriptsize,align=left] at (6.2,2.2){Each transition needs its own attributable fact.\par\par A missing receipt remains unknown.\par A stale controller is fenced.\par A reconnect reconciles the original attempt.\par The operator sees uncertainty rather than optimistic completion.};
+\end{tikzpicture}
+\column{.39\textwidth}
+\begin{block}{No blind replay}\small A lost response does not create permission to issue another physical effect.\end{block}
+\begin{block}{One current controller}\small Operator, Cortex Run, Site process, and edge execution all obey current generation or lease authority.\end{block}
+\begin{block}{Record what was known}\small The Record preserves intent, authority, delivery, acceptance, effect, uncertainty, intervention, and outcome.\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Cortex: hybrid intelligence with fenced Runs}
+\begin{columns}[T]
+\column{.47\textwidth}
+\begin{block}{Durable Agent}\small Accountable identity, role, scope, profile revision, authority ceiling, skill and tool policy, memory scope, and human supervisor.\end{block}
+\begin{block}{Replaceable Agent Run}\small Generation, model or provider, approved context, skills, tools, budget, audience, consequence class, checkpoint, lease, start and stop state. A newer generation fences an older Run.\end{block}
+\column{.50\textwidth}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[draw=mint,fill=active,text=text,rounded corners,minimum width=4.5cm,minimum height=.8cm] (a) at (3,4.2){Cortex Agent};
+\node[draw=blue,fill=panel,text=text,rounded corners,minimum width=4.5cm,minimum height=.8cm] (r) at (3,3){Current Agent Run};
+\node[draw=line,fill=panel,text=text,rounded corners,minimum width=2.1cm,minimum height=.7cm] (pr) at (1,1.6){Provider};
+\node[draw=line,fill=panel,text=text,rounded corners,minimum width=2.1cm,minimum height=.7cm] (t) at (3.5,1.6){Tools};
+\node[draw=line,fill=panel,text=text,rounded corners,minimum width=2.1cm,minimum height=.7cm] (s) at (6,1.6){Subagents};
+\draw[-{Latex},line] (a)--(r);\draw[-{Latex},line] (r)--(pr);\draw[-{Latex},line] (r)--(t);\draw[-{Latex},line] (r)--(s);
+\end{tikzpicture}
+\end{columns}
+\vspace{3mm}\begin{block}{Phase 3 autonomy}\centering Current policy + current evidence + exact Site and Mission class + current readiness + eligible resources + preserved reserve coverage $\rightarrow$ ordinary Mission and Command admission $\rightarrow$ operator supervision and intervention.\end{block}
+\end{frame}
+
+\begin{frame}{Media, integration, identity, and trust}
+\begin{columns}[T]
+\column{.49\textwidth}
+\begin{block}{Media and perception}\small Camera or sensor $\rightarrow$ Site ingest $\rightarrow$ selected live viewing and source-authoritative recording. Perception produces structured detections, Tracks, observations, confidence, and provenance.\end{block}
+\begin{block}{Cortex input}\small Structured semantic output, approved stills or clips, evidence references, source health, spatial context, uncertainty, and policy. Continuous raw video remains in the media path.\end{block}
+\column{.48\textwidth}
+\begin{block}{Integration patterns}\small Attributable events; snapshot plus delta; bounded source query; media reference; native command boundary; evidence export. Realtime messages signal change and clients reload authoritative projections after gaps.\end{block}
+\begin{block}{Identity and trust}\small Human, service, device, and Agent identities remain distinct. Service communication should be mutually authenticated and encrypted. Browsers and model providers never receive reusable source or platform secrets.\end{block}
+\end{columns}
+\vspace{3mm}\begin{block}{Evidence rule}\centering Sensor reading, detection, Track, observation, entity association, Alert, Incident, evidence, assessment, recommendation, decision, Command, and outcome remain distinct attributable facts.\end{block}
+\end{frame}
+
+\begin{frame}{Degraded operation, delivery, and status}
+\begin{columns}[T]
+\column{.48\textwidth}
+\begin{block}{Failure behavior}\small\begin{itemize}\item Source outage: unavailable with freshness.\item Media outage: no negative inference.\item Cortex outage: native operator controls remain.\item Driver outage: resource degrades or becomes unavailable.\item Enterprise outage: bounded Site-local operation continues.\item Database or authority uncertainty: writes fail closed.\item Unknown effect: reconcile, never blind replay.\end{itemize}\end{block}
+\column{.48\textwidth}
+\begin{block}{Visible delivery path}\small Foundation: identity, event, mode, and no-bypass controls.\par\vspace{1mm}Phase 1: complete operator-directed robotic Mission and Exercise.\par\vspace{1mm}Phase 2: Cortex assessment, recommendations, memory, and learning candidates.\par\vspace{1mm}Phase 3: policy-bounded autonomous observation.\par\vspace{1mm}Phase 4: structured multi-Agent and cross-Site resource coordination.\end{block}
+\end{columns}
+\vspace{3mm}\begin{block}{Current technical posture}\centering \tagcurrent\ Operator, spatial, execution, media, event, topology, Cortex, and authority foundations \quad \tagdev\ Mission, Command, readiness, edge integration, and operational Cortex \quad \tagplanned\ Site-cell federation, policy autonomy, memory, learning, and multi-Agent coordination\end{block}
+\vspace{3mm}{\color{muted}\small This overview intentionally withholds implementation-ready schemas, API inventories, database definitions, exact recovery logic, Site-specific network details, operational procedures, and proprietary source structure.}
+\end{frame}

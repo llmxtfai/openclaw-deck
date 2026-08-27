@@ -1,0 +1,29 @@
+name: Render Helios PDFs
+on:
+  push:
+    branches:
+      - tmp/helios-pdf-render
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out render source
+        uses: actions/checkout@v4
+      - name: Compile operator guide
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Helios_One_Operational_World_v0.1.tex
+      - name: Compile technical overview
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Helios_How_the_System_Works_v0.1.tex
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: helios-client-pdfs
+          if-no-files-found: error
+          path: |
+            Helios_One_Operational_World_v0.1.pdf
+            Helios_How_the_System_Works_v0.1.pdf
