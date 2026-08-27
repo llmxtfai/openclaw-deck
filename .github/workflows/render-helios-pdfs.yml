@@ -4,7 +4,7 @@ on:
     branches:
       - tmp/helios-pdf-render
 permissions:
-  contents: read
+  contents: write
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -22,6 +22,13 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Helios_How_the_System_Works_v0.1.tex
+      - name: Commit rendered PDFs to temporary branch
+        run: |
+          git config user.name "Helios PDF Renderer"
+          git config user.email "llmx@texasfortress.ai"
+          git add Helios_One_Operational_World_v0.1.pdf Helios_How_the_System_Works_v0.1.pdf
+          git commit -m "temporary rendered Helios PDFs [skip ci]"
+          git push origin HEAD:tmp/helios-pdf-render
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
